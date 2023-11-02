@@ -18,8 +18,8 @@
   run_once: true
 
 - name: Test metallb-system namespace
-  command: >-
-    k3s kubectl -n metallb-system
+  shell: >-
+    k3s kubectl get ns | grep metallb-system
   changed_when: false
   with_items: "{{ groups[group_name_master | default('master')] }}"
   run_once: true
